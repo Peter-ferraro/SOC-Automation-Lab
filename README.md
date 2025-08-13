@@ -122,4 +122,28 @@ Now I added the Wazuh application and set the action to run command and for the 
 
 <img width="327" height="765" alt="Screenshot 2025-08-07 195134" src="https://github.com/user-attachments/assets/3d4e89df-fbff-434b-a518-c84af72502b4" />
 
-Next I needed to change a few things in the Wazuh manager's ossec.conf file. One of them was to change the <event_id> to <level> in the integration block, then change the level to 5 in order to obtain events that include denial
+Next I needed to change a few things in the Wazuh manager's ossec.conf file. One of them was to change the <event_id> to <level> in the integration block, then change the level to 5 in order to obtain events that include login denial and incorrect password attempts. The other thing I needed to do in the ossec.conf file is to add an active response that will allow Wazuh to block an IP that has triggered a level 5 event and that Virustotal has returned an undesirable result on.
+
+<img width="307" height="158" alt="Screenshot 2025-08-07 155503" src="https://github.com/user-attachments/assets/55a68e98-255a-4774-99af-a68f8e8c448a" />
+
+After adding this active response to Wazuh, I needed to complete the Wazuh application configuration, so for command, I added my "firewall-drop0" active response, and for alert I added {"data":{"srcip":"$exec.all_fields.data.srcip"}}.
+
+<img width="328" height="492" alt="Screenshot 2025-08-13 190051" src="https://github.com/user-attachments/assets/212864f1-b4aa-4534-907a-1f089c3ad8c9" />
+
+Before I ran this for the final time I put a user input trigger in between Virustotal and Wazuh which would send an email asking if I wanted to block the IP.
+
+<img width="329" height="473" alt="Screenshot 2025-08-13 185809" src="https://github.com/user-attachments/assets/36e74039-b24c-4255-9b9b-2c13c865995a" />
+
+I also checked the iptables on the agent machine to make sure there were no IPs blocked yet. 
+
+<img width="636" height="354" alt="Screenshot 2025-08-12 131704" src="https://github.com/user-attachments/assets/0d407b35-55aa-48ab-acc0-c7a8fc563d83" />
+
+Ok, now I ran the workflow and in time, I recieved an email.
+
+<img width="995" height="369" alt="Screenshot 2025-08-12 133534" src="https://github.com/user-attachments/assets/b49898dc-930e-4ab6-bcbc-b2e96bf795a3" /><tr>
+
+<img width="471" height="206" alt="Screenshot 2025-08-12 133500" src="https://github.com/user-attachments/assets/2ec2a467-9f96-428f-acf8-06fec1ed3689" />
+
+Went and checked iptables again, and it looks like it worked!
+
+<img width="750" height="320" alt="Screenshot 2025-08-12 133447" src="https://github.com/user-attachments/assets/c623b96b-1c51-43e9-b449-3dbc6bb11aad" />
