@@ -94,3 +94,11 @@ I ran the workflow and the alert came through.
 
 <img width="1861" height="229" alt="Screenshot 2025-08-13 165754" src="https://github.com/user-attachments/assets/689ec396-c527-4d25-869c-d617c6526004" />
 
+My last task for this part of the project was to automate an email to notify an analyst of the alert, so I added an email app, and linked it to Virustotal so that it would send an email with information about the alert. There is certainly more information that could be added to the email for context, but in this example, I kept it short just for an example of the process.
+
+Here is the input.
+<img width="324" height="633" alt="Screenshot 2025-08-13 170859" src="https://github.com/user-attachments/assets/1a9f244d-b9a0-4fb0-88fb-f04211d149b8" />
+
+And the output.
+
+<img width="978" height="184" alt="Screenshot 2025-08-07 191215" src="https://github.com/user-attachments/assets/91649d5f-4788-43f8-a75d-b34bd522ee16" />
