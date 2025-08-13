@@ -102,3 +102,24 @@ Here is the input.
 And the output.
 
 <img width="978" height="184" alt="Screenshot 2025-08-07 191215" src="https://github.com/user-attachments/assets/91649d5f-4788-43f8-a75d-b34bd522ee16" />
+
+
+Now that I had this working, I wanted to try and apply this to real world situations. Thus far, I have been using an alert that I was generating locally. My plan is to create another Ubuntu VM, add it as a Wazuh agent, but use a different firewall that allows all incoming traffic on port 22 (SSH). So I created the new machine and named it Ubuntu agent, installed the Wazuh agent software and added it to the list of agents connected to Wazuh.
+
+<img width="954" height="287" alt="Screenshot 2025-08-07 155644" src="https://github.com/user-attachments/assets/a6dd10d5-4741-43bf-a73e-4debaef7b87c" />
+
+Next, I went back to shuffle, and I changed the workflow configuration, this is what it looks like complete, but I will walk through the steps. 
+
+<img width="1049" height="800" alt="Screenshot 2025-08-07 194959" src="https://github.com/user-attachments/assets/9bc5b399-b895-4ad9-b705-593153aa451f" />
+
+The first thing I did was replace the regex parse with the HTTP application, changed the name to Get-API and changed the action to curl. I am using this to utilize Wazuh's API capability but in order to do this I need to obtain a JWT (JSON web token). I also need to change my firewall to allow access to port 55000. The statement I used was <curl -u USER:PASSWORD -k -X Get "https://<WAZUH-IP>:55000/security/user/authenticate?raw=true"> and filled it in with the information from Wazuh API.
+
+next I changed the Virustotal action t Get an IP address report and used and changed the IP field to use the IP.
+
+<img width="330" height="772" alt="Screenshot 2025-08-07 195041" src="https://github.com/user-attachments/assets/0fdf08c5-1bbc-4320-b837-470f0e1badcb" />
+
+Now I added the Wazuh application and set the action to run command and for the API key, I selected the Get-API exec.
+
+<img width="327" height="765" alt="Screenshot 2025-08-07 195134" src="https://github.com/user-attachments/assets/3d4e89df-fbff-434b-a518-c84af72502b4" />
+
+Next I needed to change a few things in the Wazuh manager's ossec.conf file. One of them was to change the <event_id> to <level> in the integration block, then change the level to 5 in order to obtain events that include denial
