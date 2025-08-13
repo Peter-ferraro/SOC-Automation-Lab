@@ -34,13 +34,13 @@ Now it was time to SSH into this machine and install the necessary programs to g
 
 The first service I will configure is Cassandra by editing the cassandra.yaml file. I start by changing the listen_address and rpc_address to the address of the TheHive machine. I also needed to change th seed address to TheHive machine on port 7000.
 
-<img width="277" height="92" alt="Screenshot 2025-08-07 161125" src="https://github.com/user-attachments/assets/87002641-d09a-4d3f-bf80-bfa0f19e6045" />
+<img width="277" height="92" alt="Screenshot 2025-08-07 161125" src="https://github.com/user-attachments/assets/87002641-d09a-4d3f-bf80-bfa0f19e6045" /><tr>
 
-<img width="256" height="130" alt="Screenshot 2025-08-07 161154" src="https://github.com/user-attachments/assets/398e1f38-272d-4672-85a4-0828603addd2" />
+<img width="256" height="130" alt="Screenshot 2025-08-07 161154" src="https://github.com/user-attachments/assets/398e1f38-272d-4672-85a4-0828603addd2" /><tr>
 
 <img width="329" height="110" alt="Screenshot 2025-08-07 161247" src="https://github.com/user-attachments/assets/dba9e564-0213-4ae7-802a-f5f29614a94c" />
 
-Next, I needed to configure ElasticSearch, Which involves editing the elasticsearch.yml file. First I needed to change the cluster.name to the same name in the cassandra.yaml, then I needed to change the network host to the the address of TheHive machine on port 9200.
+Next, I needed to configure ElasticSearch, Which involves editing the elasticsearch.yml file. First I needed to change the cluster.name to the same name in the cassandra.yaml, then I needed to change the network host to the the address of TheHive machine on port 9000.
 
 <img width="262" height="178" alt="Screenshot 2025-08-07 161411" src="https://github.com/user-attachments/assets/c802ed7c-39e7-4be3-8dc6-580791ab910d" />
 
@@ -50,9 +50,12 @@ Now It was time to configure TheHive, The first thing I needed to do was change 
 
 Now we can go to the TheHive application.conf file and configure that. first I need to change the hostname to the public IP of TheHive machine. Then I need to the cluster.name to the name i had given it in cassandra.yaml. we also need to change the application.baseUrl to include the public IP of TheHive machine.
 
-<img width="683" height="443" alt="Screenshot 2025-08-07 161709" src="https://github.com/user-attachments/assets/4f974080-f141-4173-b0bf-d113cf868e3d" />
+<img width="683" height="443" alt="Screenshot 2025-08-07 161709" src="https://github.com/user-attachments/assets/4f974080-f141-4173-b0bf-d113cf868e3d" /><tr>
 
-<img width="246" height="124" alt="Screenshot 2025-08-07 161728" src="https://github.com/user-attachments/assets/de3e35ce-c344-4b6f-8989-fb00a75f62e8" />
+<img width="246" height="124" alt="Screenshot 2025-08-07 161728" src="https://github.com/user-attachments/assets/de3e35ce-c344-4b6f-8989-fb00a75f62e8" /><tr>
 
 <img width="336" height="102" alt="Screenshot 2025-08-07 161818" src="https://github.com/user-attachments/assets/b7abf890-d430-4773-a83d-5b0f00fecd08" />
 
+Ok, now we have TheHive up and running!
+
+<img width="1510" height="781" alt="Screenshot 2025-08-13 143308" src="https://github.com/user-attachments/assets/d0adb5bf-c93e-444c-aa38-26b3d0bb9c55" />
