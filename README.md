@@ -65,3 +65,9 @@ Now that I have TheHive working, I am going to create a new organization and cre
 <img width="973" height="390" alt="Screenshot 2025-08-07 161907" src="https://github.com/user-attachments/assets/6178c65b-466c-4fec-a650-4d62337c4a0b" /><tr>
 
 <img width="3146" height="522" alt="Screenshot 2025-08-13 144830" src="https://github.com/user-attachments/assets/b46fad2b-d4ad-43b1-881d-95bafa593e84" />
+
+Now I started a new workflow on Shuffle and added a webhook. the next thing I need to do is get the webhook URI and integrate it in the Wazuh manager ossec.conf file.
+
+<img width="699" height="542" alt="Screenshot 2025-08-07 190948copy" src="https://github.com/user-attachments/assets/9a5e8863-69fc-427d-b34a-2bef0ce022aa" /><tr>
+
+<img width="993" height="646" alt="Screenshot 2025-07-28 212552copy" src="https://github.com/user-attachments/assets/b221e048-a8ff-4da7-9dbe-699184a8100d" />
