@@ -56,6 +56,12 @@ Now we can go to the TheHive application.conf file and configure that. first I n
 
 <img width="336" height="102" alt="Screenshot 2025-08-07 161818" src="https://github.com/user-attachments/assets/b7abf890-d430-4773-a83d-5b0f00fecd08" />
 
-Ok, now we have TheHive up and running!
+Ok, now I have TheHive up and running!
 
 <img width="1510" height="781" alt="Screenshot 2025-08-13 143308" src="https://github.com/user-attachments/assets/d0adb5bf-c93e-444c-aa38-26b3d0bb9c55" />
+
+Now that I have TheHive working, I am going to create a new organization and create two users in this organization, one normal account with analyst privelages, and one service account, for the privelages on this one, normally we would want to create a custom profile with "least privilage" in mind, but for the sake of this just being a demo, I chose analyst. For the service account, I create an API key to use in Shuffle.
+
+<img width="973" height="390" alt="Screenshot 2025-08-07 161907" src="https://github.com/user-attachments/assets/6178c65b-466c-4fec-a650-4d62337c4a0b" /><tr>
+
+<img width="3146" height="522" alt="Screenshot 2025-08-13 144830" src="https://github.com/user-attachments/assets/b46fad2b-d4ad-43b1-881d-95bafa593e84" />
