@@ -66,8 +66,31 @@ Now that I have TheHive working, I am going to create a new organization and cre
 
 <img width="3146" height="522" alt="Screenshot 2025-08-13 144830" src="https://github.com/user-attachments/assets/b46fad2b-d4ad-43b1-881d-95bafa593e84" />
 
-Now I started a new workflow on Shuffle and added a webhook. the next thing I need to do is get the webhook URI and integrate it in the Wazuh manager ossec.conf file.
+Now I started a new workflow on Shuffle and added a webhook. the next thing I need to do is get the webhook URI and integrate it in the Wazuh manager ossec.conf file. (A note for the second picture below: I took these screenshots after I had finished this lab. At this point I would want the <level> tag to be replaced with <rule_id> and the rule to be 100002, as this is the rule I created for Mimikatz detection. Later in this lab, I will change it to <level> though.)
 
-<img width="699" height="542" alt="Screenshot 2025-08-07 190948copy" src="https://github.com/user-attachments/assets/9a5e8863-69fc-427d-b34a-2bef0ce022aa" /><tr>
+<img width="350" height="271" alt="Screenshot 2025-08-07 190948copy" src="https://github.com/user-attachments/assets/8ac8508c-d31c-4a1f-be9d-d76295bdfae2" /><tr>
 
 <img width="993" height="646" alt="Screenshot 2025-07-28 212552copy" src="https://github.com/user-attachments/assets/b221e048-a8ff-4da7-9dbe-699184a8100d" />
+
+Now that I have the webhook configured, the Mimikats alert is sent from Wazuh to shuffle. Now I want to extract the SHA256 hash from the Mimikatz file, to do this I need to parse out the hash value using a Regex capture group. I used ChatGPT to create a Regex script to parse SHA256 from the value "hashes" provided in the alert data.
+
+<img width="333" height="582" alt="Screenshot 2025-08-13 160714" src="https://github.com/user-attachments/assets/cac52dd8-84e4-47ac-b5c1-712fbdb23cd0" />
+
+Now that I have parsed the SHA256, I am going to use Virustotal to analyze this hash and gather information on the file. In order to do this I needed to use an API key from Virustotal. Once I got that, I added the Virustotal app to my workflow and configured it to get a hash report, and for the has i used the output from the Regex parse from earlier.
+
+<img width="339" height="468" alt="Screenshot 2025-08-13 162258" src="https://github.com/user-attachments/assets/dd41dffe-7524-4c12-8f58-1b46a5e32fd0" />
+
+And we get results, I won't expand it just to save space on this page.
+
+<img width="882" height="550" alt="Screenshot 2025-08-13 163740" src="https://github.com/user-attachments/assets/ca325d09-55fc-4f86-8a5a-7a00d5e545ba" />
+
+Now my next task was to set up the TheHive app to to send the alert TheHive and create a new case. This was actually more of a challange than I was expecting because some of the fields that I wanted to include weren't in TheHive app, so I had to manually create the JSON script. In hindsight, it wasn't that challanging, but it was the first for me, so there was a bit of trial and error. I used the API key that I generated earlier to authenticate, then chose the action to create alert. Here is the general configuration as well as the JSON script that i came up with.
+
+<img width="334" height="370" alt="Screenshot 2025-08-13 165331" src="https://github.com/user-attachments/assets/319d66e2-7059-4e0e-adcc-b8331445bd68" /><tr>
+
+<img width="1551" height="676" alt="Screenshot 2025-08-07 191110" src="https://github.com/user-attachments/assets/d75d3825-45c1-4f27-a967-e9244889b2e5" />
+
+I ran the workflow and the alert came through.
+
+<img width="1861" height="229" alt="Screenshot 2025-08-13 165754" src="https://github.com/user-attachments/assets/689ec396-c527-4d25-869c-d617c6526004" />
+
